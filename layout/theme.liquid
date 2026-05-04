@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ shop.name }} | {{ page_title }}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    {{ 'jellyflow.css' | asset_url | stylesheet_tag }}
+    {{ 'jellyflow.js' | asset_url | script_tag }}
+    {{ content_for_header }}
+  </head>
+  <body class="jellyflow-bg">
+    {% section 'announcement-bar' %}
+    {% section 'ticker-bar' %}
+    <nav id="mainNav" class="sticky-nav">
+      <a href="/"><img src="{{ 'logo.png' | asset_url }}" alt="JellyFlow Logo" height="40"></a>
+      <div class="cart-badge">
+        <a href="/cart">
+          🛒 <span id="CartCountBubble">{{ cart.item_count }}</span>
+        </a>
+      </div>
+    </nav>
+    {{ content_for_layout }}
+    {% section 'footer' %}
+    {{ content_for_footer }}
+  </body>
+</html>
